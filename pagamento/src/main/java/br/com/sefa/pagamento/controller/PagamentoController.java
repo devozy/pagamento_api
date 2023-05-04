@@ -46,25 +46,12 @@ public class PagamentoController {
     public void removerPagamento(@PathVariable("id") Long id){
         pagamentoService.buscarPorId(id)
                 .map(pagamento -> {
-                    pagamentoService.removerPorId(pagamento.getId());
-                    return Void.TYPE;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pagamento não encontrado."));
-    }
-
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizarPagamento(@PathVariable("id") Long id, @RequestBody PagamentoEntity pagamento){
-        pagamentoService.buscarPorId(id)
-                .map(pagamento1 -> {
-                    modelMapper.map(pagamento, pagamento1);
                     try {
-                        pagamentoService.salvar(pagamento1);
+                        pagamentoService.removerPorId(pagamento.getId());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    return pagamentoService.buscarPorId(id);
+                    return Void.TYPE;
                 }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pagamento não encontrado."));
     }
-
-
 }

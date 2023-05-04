@@ -27,12 +27,14 @@ public class PagamentoEntity {
         private String cpfCnpj;
 
         @Column(name = "valor_pagamento", nullable = false)
-        private String valorPagamento;
+        private Double valorPagamento;
 
         @Column(name = "tipo_pagamento", nullable = false)
         private String tipoPagamento;
 
         @Column(name = "status_pagamento")
-        private String statusPagamento = "P";
+        private String statusPagamento = "";
 
+        @Column(name = "id_status_pagamento")
+        private Integer idStatusPagamento;
 }
