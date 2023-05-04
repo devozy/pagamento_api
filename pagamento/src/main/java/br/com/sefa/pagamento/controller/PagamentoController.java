@@ -24,7 +24,7 @@ public class PagamentoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public PagamentoEntity salvar(@RequestBody PagamentoEntity pagamento){
+    public PagamentoEntity salvar(@RequestBody PagamentoEntity pagamento) throws Exception {
         return pagamentoService.salvar(pagamento);
     }
 
@@ -57,9 +57,13 @@ public class PagamentoController {
         pagamentoService.buscarPorId(id)
                 .map(pagamento1 -> {
                     modelMapper.map(pagamento, pagamento1);
-                    pagamentoService.salvar(pagamento1);
-                    return Void.TYPE;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pagamento nao encontrado."));
+                    try {
+                        pagamentoService.salvar(pagamento1);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    return pagamentoService.buscarPorId(id);
+                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pagamento não encontrado."));
     }
 
 

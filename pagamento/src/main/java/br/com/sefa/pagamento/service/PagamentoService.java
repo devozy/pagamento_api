@@ -8,7 +8,9 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,8 +39,15 @@ public class PagamentoService {
         return pagamentoRepository.findAll(example, pageable);
     }
 
-    public PagamentoEntity salvar(PagamentoEntity pagamento){
-        pagamento.setStatusPagamento("P");
+    public PagamentoEntity salvar(PagamentoEntity pagamento) throws Exception {
+
+        //Utizando verificação com um contains no lugar de um enum por questão de tempo.
+        if(pagamento.getTipoPagamento().contains("cartao") && pagamento.getNumeroCartao().isEmpty())
+        {
+            new ResponseStatusException(HttpStatus.BAD_REQUEST, "Necessário Número do Cartão.");
+            throw new Exception("Necessário Número do Cartão.");
+         }
+
         return pagamentoRepository.save(pagamento);
     }
 

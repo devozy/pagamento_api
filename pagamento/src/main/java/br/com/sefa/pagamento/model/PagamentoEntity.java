@@ -17,22 +17,22 @@ public class PagamentoEntity {
         @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
 
-        @Column(name = "codigo_debito")
+        @Column(name = "codigo_debito", nullable = false)
         private Integer codigoDebito;
 
         @Column(name = "numero_cartao")
-        private String numeroCartao;
+        private String numeroCartao = "";
 
-        @Column(name = "cpf_cnpj")
+        @Column(name = "cpf_cnpj", nullable = false)
         private String cpfCnpj;
 
-        @Column(name = "valor_pagamento")
+        @Column(name = "valor_pagamento", nullable = false)
         private String valorPagamento;
 
-        @Column(name = "tipo_pagamento")
+        @Column(name = "tipo_pagamento", nullable = false)
         private String tipoPagamento;
 
         @Column(name = "status_pagamento")
-        private String statusPagamento;
+        private String statusPagamento = "P";
 
 }

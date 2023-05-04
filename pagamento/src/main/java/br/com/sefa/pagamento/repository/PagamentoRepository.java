@@ -9,11 +9,4 @@ import java.util.List;
 
 public interface PagamentoRepository extends JpaRepository<PagamentoEntity, Long> {
 
-//    @Query("SELECT p FROM pagamento p " +
-//            "WHERE p.codigoDebito = :codigoDebito " +
-//            "OR p.cpfCnpj like ':%cpfCnpj%'" +
-//            "OR p.statusPagamento like ':%statusPagamento%'")
-//    List<PagamentoEntity> findPagamentoEntityByCodigoDebitoOrCpfCnpjOrStatusPagamento(@Param("codigoDebito") int codigoDebito,
-//                                                                                      @Param("cpfCnpj") String cpfCnpj,
-//                                                                                      @Param("statusPagamento") String statusPagamento);
 }
