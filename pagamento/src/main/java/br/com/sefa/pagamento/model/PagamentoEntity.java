@@ -1,25 +1,23 @@
-package br.com.sefa.pagamento.entity;
+package br.com.sefa.pagamento.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
+@Getter
+@Setter
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-public class Pagamento implements Serializable {
+@Entity (name = "pagamento")
+public class PagamentoEntity {
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
         private Long id;
 
-        @Column(name = "codigo_debito", nullable = false)
+        @Column(name = "codigo_debito")
         private int codigoDebito;
 
         @Column(name = "numero_cartao")
@@ -32,4 +30,9 @@ public class Pagamento implements Serializable {
         private String valorPagamento;
 
         @Column(name = "tipo_pagamento")
-        private String tipoPagamento;}
+        private String tipoPagamento;
+
+        @Column(name = "status_pagamento")
+        private String statusPagamento = "P";
+
+}
