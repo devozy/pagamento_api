@@ -1,10 +1,6 @@
 package br.com.sefa.pagamento.model.dto;
 
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,8 +13,8 @@ import lombok.Setter;
 public class FiltroPagamento {
 
     private Long id;
-    private int codigoDebito;
+    private Integer codigoDebito;
     private String cpfCnpj;
-    private String status;
+    private String statusPagamento;
 
 }

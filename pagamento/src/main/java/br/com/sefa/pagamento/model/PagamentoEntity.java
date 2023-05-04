@@ -18,7 +18,7 @@ public class PagamentoEntity {
         private Long id;
 
         @Column(name = "codigo_debito")
-        private int codigoDebito;
+        private Integer codigoDebito;
 
         @Column(name = "numero_cartao")
         private String numeroCartao;
@@ -33,6 +33,6 @@ public class PagamentoEntity {
         private String tipoPagamento;
 
         @Column(name = "status_pagamento")
-        private String statusPagamento = "P";
+        private String statusPagamento;
 
 }

@@ -21,9 +21,10 @@ public class PagamentoService {
 
     public Page<PagamentoEntity> listaPagamento(FiltroPagamento filtroPagamento, Pageable pageable){
         PagamentoEntity pagamentoEntity = PagamentoEntity.builder()
+                .id(filtroPagamento.getId())
                 .codigoDebito(filtroPagamento.getCodigoDebito())
                 .cpfCnpj(filtroPagamento.getCpfCnpj())
-                .statusPagamento(filtroPagamento.getStatus())
+                .statusPagamento(filtroPagamento.getStatusPagamento())
                 .build();
 
         ExampleMatcher exampleMatcher = ExampleMatcher.matching()
@@ -36,8 +37,8 @@ public class PagamentoService {
         return pagamentoRepository.findAll(example, pageable);
     }
 
-
     public PagamentoEntity salvar(PagamentoEntity pagamento){
+        pagamento.setStatusPagamento("P");
         return pagamentoRepository.save(pagamento);
     }
 
