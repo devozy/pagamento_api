@@ -44,22 +44,21 @@ Mock para atualizacao de status de pagamento ser falha
 }
 
 
-Paginação:
+Paginação: {} 
 
-{
-  "page": 1,
-  "size": 1,
-  "sort": [
-  ]
-}
 
 
 Filtros:
 
+Ex1:
 {
   "codigoDebito": 100,
   "cpfCnpj": "123.456.789-10",
   "statusPagamento": "pendente"
 }
 
+Ex2:
+{
+  "statusPagamento": "pendente"
+}
 
