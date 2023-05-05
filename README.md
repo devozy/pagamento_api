@@ -3,62 +3,73 @@
 Swagger: http://localhost:8080/swagger-ui/index.html#/
 
 
-Mocks para testes:
+Dados Mockagem
 
-Mock com pix
-{
-    "codigoDebito": 100,
-    "cpfCnpj": "123.456.789-10",
-    "valorPagamento": "100",
-    "tipoPagamento": "pix"
+==================================================
+
+POST
+
+Pagamento com PIX
+{ 
+"codigoDebito": 101, 
+"cpfCnpj": "123.456.789-10", 
+"valorPagamento": "100", 
+"tipoPagamento": "pix" 
 }
 
-Mock para falhar com cartao
-
-{
-    "codigoDebito": 100,
-    "cpfCnpj": "123.456.789-10",
-    "valorPagamento": "100",
-    "tipoPagamento": "cartao_debito"
+Pagamento com boleto
+{ 
+"codigoDebito": 102, 
+"cpfCnpj": "123.456.789-10", 
+"valorPagamento": "100", 
+"tipoPagamento": "boleto" 
 }
 
-Mock com cartão sem falha
-
-{
-    "codigoDebito": 155,
-    "numeroCartao": "155515",
-    "cpfCnpj": "123.456.789-10",
-    "valorPagamento": "100",
-    "tipoPagamento": "cartao_debito"
+Pagamento com cartão (bad request porque não há número do cartão)
+{ 
+"codigoDebito": 103, 
+"cpfCnpj": "123.456.789-10", 
+"valorPagamento": "100", 
+"tipoPagamento": "cartao_debito" 
 }
 
-
-Mock para atualizacao de status de pagamento ser falha
-
-{
-    "codigoDebito": 100,
-    "numeroCartao": "155515",
-    "cpfCnpj": "123.456.789-10",
-    "valorPagamento": "0",
-    "tipoPagamento": "cartao_debito"
+Pagamento com cartão (com número de cartão)
+{ 
+"codigoDebito": 103, 
+"cpfCnpj": "123.456.789-10", 
+"numeroCartao": "155515", 
+"valorPagamento": "100", 
+"tipoPagamento": "cartao_debito" 
 }
 
 
-Paginação: {} 
-
-
-
-Filtros:
-
-Ex1:
-{
-  "codigoDebito": 100,
-  "cpfCnpj": "123.456.789-10",
-  "statusPagamento": "pendente"
+Dados para que o pagamento seja processado como "Falha" 
+{ 
+"codigoDebito": 104, 
+"cpfCnpj": "123.456.789-10", 
+"valorPagamento": "0", 
+"tipoPagamento": "pix" 
 }
 
-Ex2:
-{
-  "statusPagamento": "pendente"
+
+==================================================
+
+GET (lista)
+
+Paginação: 
+{}
+
+Filtros
+Ex1: 
+{ 
+"codigoDebito": 101, 
+"cpfCnpj": "123.456.789-10", 
+"statusPagamento": "pendente" 
 }
 
+Ex2: 
+{ 
+"statusPagamento": "pendente" 
+}
+
+==================================================
