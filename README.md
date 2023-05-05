@@ -1,21 +1,6 @@
 # pagamento_api
 
-URLs:
-
-Incluir pagamentos:
-http://localhost:8080/pagamento
-
-Buscar um pagamento por id:
-http://localhost:8080/pagamento/id
-
-Deletar um pagamento por id:
-http://localhost:8080/pagamento/id
-
-Atualizar um pagamento:
-http://localhost:8080/atualizar/aprovar/id
-
-Regressar pagamento falho para estado pendente
-http://localhost:8080/atualizar/regressar/id
+Swagger: http://localhost:8080/swagger-ui/index.html#/
 
 
 Mocks para testes:
