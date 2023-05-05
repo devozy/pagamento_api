@@ -1,5 +1,6 @@
 package br.com.sefa.pagamento.service;
 
+import br.com.sefa.pagamento.util.EnumStatus;
 import br.com.sefa.pagamento.model.PagamentoEntity;
 import br.com.sefa.pagamento.model.dto.FiltroPagamento;
 import br.com.sefa.pagamento.repository.PagamentoRepository;
@@ -9,9 +10,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -42,8 +41,8 @@ public class PagamentoService {
 
     public PagamentoEntity salvar(PagamentoEntity pagamento) throws Exception {
 
-        pagamento.setStatusPagamento(Util.PENDENTE.getDescricao());
-        pagamento.setIdStatusPagamento(Util.PENDENTE.getIdEnum());
+        pagamento.setStatusPagamento(EnumStatus.PENDENTE.getDescricao());
+        pagamento.setIdStatusPagamento(EnumStatus.PENDENTE.getIdEnum());
 
         //Utizando verificação com um contains. Alterar valor vindo do front para int.
         if(pagamento.getTipoPagamento().contains("cartao") && pagamento.getNumeroCartao().isEmpty())
@@ -66,7 +65,7 @@ public class PagamentoService {
         Optional<PagamentoEntity> pagamentoOptional =  buscarPorId(id);
         PagamentoEntity pagamento = pagamentoOptional.orElseThrow(() -> new NotFoundException("Pagamento não encontrado"));
 
-        if(!pagamento.getIdStatusPagamento().equals(Util.PENDENTE.getIdEnum())){
+        if(!pagamento.getIdStatusPagamento().equals(EnumStatus.PENDENTE.getIdEnum())){
             throw new Exception("Pagamento Não Pendente.");
         }
         pagamentoRepository.deleteById(id);

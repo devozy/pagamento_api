@@ -1,6 +1,6 @@
-package br.com.sefa.pagamento.service;
+package br.com.sefa.pagamento.util;
 
-public enum Util {
+public enum EnumStatus {
 
     SUCESSO("Processado com Sucesso", 1),
     FALHA("Processado com Falha", 2),
@@ -9,7 +9,7 @@ public enum Util {
     private String descricao;
     private int idEnum;
 
-    Util(String descricao, int idEnum) {
+    EnumStatus(String descricao, int idEnum) {
         this.descricao = descricao;
         this.idEnum = idEnum;
     }

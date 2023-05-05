@@ -1,12 +1,11 @@
 package br.com.sefa.pagamento.service;
 
+import br.com.sefa.pagamento.util.EnumStatus;
 import br.com.sefa.pagamento.model.PagamentoEntity;
 import br.com.sefa.pagamento.repository.PagamentoRepository;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
@@ -31,12 +30,12 @@ public class AtualizarPagamentoService {
 
         if(pagamentoConfirmado)
         {
-            pagamento.setStatusPagamento(Util.SUCESSO.getDescricao());
-            pagamento.setIdStatusPagamento(Util.SUCESSO.getIdEnum());
+            pagamento.setStatusPagamento(EnumStatus.SUCESSO.getDescricao());
+            pagamento.setIdStatusPagamento(EnumStatus.SUCESSO.getIdEnum());
         }
         else{
-            pagamento.setStatusPagamento(Util.FALHA.getDescricao());
-            pagamento.setIdStatusPagamento(Util.FALHA.getIdEnum());
+            pagamento.setStatusPagamento(EnumStatus.FALHA.getDescricao());
+            pagamento.setIdStatusPagamento(EnumStatus.FALHA.getIdEnum());
         }
 
         return pagamentoRepository.save(pagamento);
@@ -47,10 +46,10 @@ public class AtualizarPagamentoService {
         Optional<PagamentoEntity> pagamentoOptional =  pagamentoService.buscarPorId(id);
         PagamentoEntity pagamento = pagamentoOptional.orElseThrow(() -> new NotFoundException("Pagamento não encontrado"));
 
-        if(pagamento.getIdStatusPagamento().equals(Util.FALHA.getIdEnum()))
+        if(pagamento.getIdStatusPagamento().equals(EnumStatus.FALHA.getIdEnum()))
         {
-            pagamento.setStatusPagamento(Util.PENDENTE.getDescricao());
-            pagamento.setIdStatusPagamento(Util.PENDENTE.getIdEnum());
+            pagamento.setStatusPagamento(EnumStatus.PENDENTE.getDescricao());
+            pagamento.setIdStatusPagamento(EnumStatus.PENDENTE.getIdEnum());
         }
         return pagamentoRepository.save(pagamento);
     }

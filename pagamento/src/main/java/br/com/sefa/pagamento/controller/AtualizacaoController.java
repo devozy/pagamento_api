@@ -4,6 +4,7 @@ import br.com.sefa.pagamento.model.PagamentoEntity;
 import br.com.sefa.pagamento.model.dto.FiltroPagamento;
 import br.com.sefa.pagamento.service.AtualizarPagamentoService;
 import br.com.sefa.pagamento.service.PagamentoService;
+import io.swagger.annotations.ApiOperation;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
