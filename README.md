@@ -44,4 +44,22 @@ Mock para atualizacao de status de pagamento ser falha
 }
 
 
+Paginação:
+
+{
+  "page": 1,
+  "size": 1,
+  "sort": [
+  ]
+}
+
+
+Filtros:
+
+{
+  "codigoDebito": 100,
+  "cpfCnpj": "123.456.789-10",
+  "statusPagamento": "pendente"
+}
+
 
